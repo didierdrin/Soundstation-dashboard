@@ -47,7 +47,7 @@ function Dashboard() {
 
   const menuItems = [
     { name: 'overview', icon: FaHome, component: Overview },
-    { name: 'Garmets', icon: FaBoxes, component: Library },
+    { name: 'Library', icon: FaBoxes, component: Library },
     { name: 'Orders', icon: FaShoppingCart, component: CurrentOrders },
     { name: 'advertise', icon: FaAd, component: Advertise },
     { name: 'help', icon: FaQuestionCircle, component: Help },
@@ -59,7 +59,7 @@ function Dashboard() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-indigo-500 min-h-screen flex flex-col text-white p-5 transition-all duration-300`}>
+      <div className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-purple-500 min-h-screen flex flex-col text-white p-5 transition-all duration-300`}>
         <div className='flex flex-col flex-grow'>
         <button onClick={() => setSidebarOpen(!sidebarOpen)} className=" mb-5 w-full text-left hover:text-slate-300">
           {sidebarOpen ? '« ' : '»'}
