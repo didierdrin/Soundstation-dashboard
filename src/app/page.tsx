@@ -30,7 +30,7 @@ import dynamic from "next/dynamic";
 
 
 
-const function Dashboard() {
+function Dashboard() {
   //const [user] = useAuthState(auth);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
