@@ -75,7 +75,7 @@ const Library = () => {
   });
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "spaceman_beats"), (snapshot) => {
+    const unsubscribe = onSnapshot(collection(db, "beats"), (snapshot) => {
       setBeats(
         snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -107,12 +107,12 @@ const Library = () => {
     setLoading(true);
     try {
       // Upload files
-      const audioUrl = await uploadFile(audioFile, `spaceman_beats/${auth.currentUser.uid}/${Date.now()}-full.mp3`);
+      const audioUrl = await uploadFile(audioFile, `beats/${auth.currentUser.uid}/${Date.now()}-full.mp3`);
       const previewUrl = previewFile
-        ? await uploadFile(previewFile, `spaceman_beats/${auth.currentUser.uid}/${Date.now()}-preview.mp3`)
+        ? await uploadFile(previewFile, `beats/${auth.currentUser.uid}/${Date.now()}-preview.mp3`)
         : audioUrl;
       const imageUrl = imageFile
-        ? await uploadFile(imageFile, `spaceman_beats/${auth.currentUser.uid}/${Date.now()}-cover.jpg`)
+        ? await uploadFile(imageFile, `beats/${auth.currentUser.uid}/${Date.now()}-cover.jpg`)
         : "";
 
       // Create searchKeywords
@@ -124,7 +124,7 @@ const Library = () => {
       ].filter(Boolean);
 
       // Add document to Firestore
-      const docRef = await addDoc(collection(db, "spaceman_beats"), {
+      const docRef = await addDoc(collection(db, "beats"), {
         ...newBeat,
         producerId: auth.currentUser.uid,
         producerName: newBeat.producerName, // Use producerName from the form
@@ -176,7 +176,7 @@ const Library = () => {
     if (!confirm("Are you sure you want to delete this beat?")) return;
 
     try {
-      await deleteDoc(doc(db, "spaceman_beats", id));
+      await deleteDoc(doc(db, "beats", id));
     } catch (error) {
       console.error("Error deleting beat: ", error);
       alert("Failed to delete beat");
